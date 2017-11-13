@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>计算数组中数字之和</title>
+		<script src="../vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul v-for="(order,index) in orders">
+				<li>{{order.name}}</li>
+				<li>{{order.price}}</li>
+				<li>{{order.num}}</li>
+			</ul>
+			<h1>总计 {{ getSum }} 个</h1>
+			<h1>总计 {{ getTotalPrice }} 元</h1>
+		</div>
+
+		<script>
+          new Vue({
+            el: '#app',
+            data: {
+              orders: [
+                {
+                  name: 'apple',
+                  num: 4,
+                  price: 13
+                },
+                {
+                  name: 'pear',
+                  num: 3,
+                  price: 12
+                },
+                {
+                  name: 'orange',
+                  num: 5,
+                  price: 15
+                }
+              ]
+            },
+            computed: {
+              getSum: function () {
+//                return this.orders.reduce(function (a,b) {
+//                  debugger
+//                  return  a.num + b.num;
+//                })
+                var sum = 0;
+                for (var i=0; i<this.orders.length; i++){
+                  sum += this.orders[i].num;
+                }
+                return sum;
+              },
+              getTotalPrice: function () {
+                var total = 0;
+                for (var i=0; i < this.orders.length; i++){
+                  total += this.orders[i].num * this.orders[i].price;
+                }
+                return total;
+              }
+            }
+          })
+		</script>
+	</body>
+</html>

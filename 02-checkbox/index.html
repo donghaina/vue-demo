@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>checkbox回填</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div v-for="(item,index) in Names">
+      <input type="checkbox" id="index" :value="item" :key="index" v-model="checkedNames">
+      <label for="index">{{item}}</label>
+    </div>
+    <br>
+    <span>Checked names: {{ checkedNames}}</span>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        Names: ['Jack', 'John', 'Mike'],
+        checkedNames: ['Jack','John']
+      }
+    })
+  </script>
+</body>
+
+</html>
